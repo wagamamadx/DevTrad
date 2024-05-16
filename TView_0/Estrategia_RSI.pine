@@ -1,0 +1,27 @@
+//@version=4
+strategy("RSI Simple Strategy", overlay = true)
+
+// Parametros de estrategia
+rsiPeriod = input(14,title = "RSI Period")
+overboughtLevel = input(70, title = "Overbought Level")
+oversoldLevel = input(30,title = "Oversold Level")
+
+//calculo del RSI
+
+rsi = rsi(close, rsiPeriod)
+
+// Condiciones de entrada
+
+longCondition = crossover(rsi,oversoldLevel)
+if(longCondition)
+    strategy.entry("Buy",strategy.long)
+
+//Condiciones de salida
+shortCondition = crossunder(rsi, overboughtLevel)
+if(shortCondition)
+    strategy.close("Buy")
+
+// Mostrar RSI en el grafico
+plot(rsi, title = "RSI", color=color.white)
+hline(overboughtLevel, title = "Overbought Level", color = color.red)
+hline(oversoldLevel, title = "Oversold Level", color = color.green)

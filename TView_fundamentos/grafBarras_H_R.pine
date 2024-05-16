@@ -1,0 +1,13 @@
+//@version = 5
+//indicator("MyScript", overlay = true)
+indicator("MyScript", overlay = false)
+// plot(close)
+
+backgroudColor = barstate.ishistory ? color.new(color.green,50) : barstate.isrealtime ? color.new(color.yellow,50) : na
+bgcolor(backgroudColor)
+
+varip barIteration = 0
+if barstate.isnew
+    barIteration := 0
+barIteration += 1
+plot(barIteration,style=plot.style_columns)
