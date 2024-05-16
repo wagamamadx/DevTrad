@@ -1,2 +1,2 @@
-# Indica que los archivos .js son JavaScript
+# Indica que los archivos .pine son PineScript
 *.pine linguist-language=PineScript
